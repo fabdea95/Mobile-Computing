@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<TextView
+		android:text="Song Title"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:id="@+id/textView1" />
+	<TextView
+		android:id="@+id/SongTitle" />
+	<TextView
+		android:text="Artist"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView3" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Artist" />
+	<TextView
+		android:text="Imvdb Pick:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView5" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/ImvdbPick" />
+	<TextView
+		android:text="Year"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView7" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Year" />
+	<TextView
+		android:text="Url:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView9" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Url" />
+	<TextView
+		android:text="	ID:"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView10" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/VideoId" />
+
+</GridLayout>
