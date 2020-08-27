@@ -33,7 +33,7 @@ namespace mtw
 
             
             view.FindViewById<TextView>(Resource.Id.SongTitle).Text = video.song_title;
-            view.FindViewById<TextView>(Resource.Id.Year).Text = video.year;
+            view.FindViewById<TextView>(Resource.Id.Artist).Text = video.Artist.name;
             return view;
         }
 

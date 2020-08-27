@@ -67,8 +67,7 @@ namespace Imvdb.LibreriaImvdb
                 byte[] byt = System.Text.Encoding.UTF8.GetBytes(appKey);
                 base64 = Convert.ToBase64String(byt);
                 var handler = new HttpClientHandler()
-                {
-                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+                {                    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
                 };
                 //così decomprimerò automaticamente i dati se questi mi arrivano compressi
                 string result = "";
@@ -103,6 +102,23 @@ namespace Imvdb.LibreriaImvdb
                 */
 
                 JArray a = JArray.Parse(result); //results: stringa che contiene la risposta del server
+                int i = -1;
+
+                //JArray b = a.Children();
+                List<Artists> vid_artists = a.Children().Select(
+                    //foreach()
+                    status => 
+                
+                new Artists
+                    {
+                        name = (string)status.SelectToken("artists[0].name"),
+                        slug = (string)status.SelectToken("artists[0].slug"),
+                        url = (string)status.SelectToken("artists[0].url")
+
+
+                    }
+
+                ).ToList();
                 IList<Video> videos = a.Children()
                     .Select(status =>
                         new Video
@@ -118,18 +134,27 @@ namespace Imvdb.LibreriaImvdb
                             aspect_ratio = (string)status.SelectToken("aspect_ratio"),
                             year = (string)status.SelectToken("year"),
                             verified_credits = bool.Parse((string)status.SelectToken("verified_credits")),
-
-                            /*new Video.Artists{
-                                name = (string)status.SelectToken("artists[0].name")
-                            } */
+                            
+                            Artist = vid_artists[i=i+1]
+                            
                         }
-
+                        
                  ).ToList();
+                
 
+                System.Diagnostics.Debug.WriteLine(vid_artists[0].name);
 
                 System.Diagnostics.Debug.WriteLine(videos[0].id);
                 System.Diagnostics.Debug.WriteLine(videos[0].song_title);
                 System.Diagnostics.Debug.WriteLine(videos[0].song_slug);
+                System.Diagnostics.Debug.WriteLine(videos[0].Artist.name);
+
+                System.Diagnostics.Debug.WriteLine(videos[1].id);
+                System.Diagnostics.Debug.WriteLine(videos[1].song_title);
+                System.Diagnostics.Debug.WriteLine(videos[1].song_slug);
+                System.Diagnostics.Debug.WriteLine(videos[1].Artist.name);
+
+
 
                 callback(videos);
 
@@ -162,11 +187,11 @@ namespace Imvdb.LibreriaImvdb
                 System.Diagnostics.Debug.WriteLine("Exception is thrown. Message is :" + e.Message);
             }
         }
-        /*
-        public async void GetFull(Video selectedVideo)
+        
+        public async void GetFull(long id)
         {
             const string endpoint = @"https://imvdb.com/api/v1/video/";
-            string url = endpoint + selectedVideo.id + "?include=sources,popularity,featured,credits,bts,countries";
+            string url = endpoint + id + "?include=sources,popularity,featured,credits,bts,countries";
             String base64;
 
             byte[] byt = System.Text.Encoding.UTF8.GetBytes(appKey);
@@ -196,9 +221,11 @@ namespace Imvdb.LibreriaImvdb
                     result = jsonResponse;
                     System.Diagnostics.Debug.WriteLine(result);
                 }
-                selectedVideo = JsonConvert.DeserializeObject<Video>(result);
+                Video selectedVideo = JsonConvert.DeserializeObject<Video>(result);
                 System.Diagnostics.Debug.WriteLine(selectedVideo.release_date_string);
             }
-        }*/
+            //Video fullvideo;
+            //callback(fullvideo);
+        }
     }
 }

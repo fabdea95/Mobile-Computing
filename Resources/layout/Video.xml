@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
 		android:padding="5dip" />
   <TextView
-   android:id="@+id/Year"
+   android:id="@+id/Artist"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
    android:ellipsize="end"

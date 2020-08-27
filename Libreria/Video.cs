@@ -1,7 +1,18 @@
-﻿namespace Imvdb.LibreriaImvdb
+﻿using System.Collections.Generic;
+namespace Imvdb.LibreriaImvdb
 {
+    public class Artists
+        {
+            public string name { get; set; }
+            public string slug { get; set; }
+            public string url { get; set; }
+            public long discogs_Id { get; set; }
+         
+            
+        }
     public class Video
     {
+        public int i;
         public long id { get; set; }
         public char production_status { get; set; }
         public string song_title { get; set; }
@@ -14,13 +25,34 @@
         public string aspect_ratio { get; set; }
         public string year { get; set; }
         public bool verified_credits { get; set; }
-        public class Artists
+        public long release_date_stamp { get; set; }
+        public string release_date_string { get; set; }
+        //public List<Artist> artists { get; set; }
+
+        private /*List<Artists>*/ Artists _artist;
+        public /*List<Artists>*/ Artists Artist
         {
-            public string name { get; set; }
-            public string slug { get; set; }
-            public string url { get; set; }
-            public long discogs_Id { get; set; }
+            get
+            {
+                if(_artist == null)
+                {
+                    this._artist = new Artists(); // List<Artists>();
+                    return _artist;
+                }
+                return _artist;
+            }
+            set
+            {
+                this._artist = value; // = value;
+                this._artist.name = value.name;
+                this._artist.slug = value.slug;
+                this._artist.url = value.url;
+
+               
+            }
         }
+        
+    }
         public class Images
         {
             public string o { get; set; }
@@ -58,8 +90,7 @@
             public long position_id { get; set; }
             public string entity_url { get; set; }
         }
-        public long release_date_stamp { get; set; }
-        public string release_date_string { get; set; }
+        
         public class Popularity {
             public long views_all_time { get; set; }
             public string views_all_time_formatted { get; set; }
@@ -79,4 +110,3 @@
         }
 
     }
-}
