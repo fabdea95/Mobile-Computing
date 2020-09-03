@@ -103,22 +103,29 @@ namespace Imvdb.LibreriaImvdb
 
                 JArray a = JArray.Parse(result); //results: stringa che contiene la risposta del server
                 int i = -1;
-
+                int j = -1;
                 //JArray b = a.Children();
                 List<Artists> vid_artists = a.Children().Select(
                     //foreach()
                     status => 
-                
-                new Artists
+                    new Artists
                     {
                         name = (string)status.SelectToken("artists[0].name"),
                         slug = (string)status.SelectToken("artists[0].slug"),
                         url = (string)status.SelectToken("artists[0].url")
-
-
                     }
-
                 ).ToList();
+                 IList<Images> imgs = a.Children().Select(
+                    status =>
+                    new Images
+                    {
+                        o = (string)status.SelectToken("image.o"),
+                        l = (string)status.SelectToken("image.l"),
+                        b = (string)status.SelectToken("image.b"),
+                        t = (string)status.SelectToken("image.t"),
+                        s = (string)status.SelectToken("image.s")
+                    }
+                    ).ToList();
                 IList<Video> videos = a.Children()
                     .Select(status =>
                         new Video
@@ -136,7 +143,7 @@ namespace Imvdb.LibreriaImvdb
                             verified_credits = bool.Parse((string)status.SelectToken("verified_credits")),
                             
                             Artist = vid_artists[i=i+1]
-                            
+                            Image = imgs[j=j+1]
                         }
                         
                  ).ToList();
