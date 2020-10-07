@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	>
+<GridLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+>
+			<ImageView
+			android:id="@+id/Full_img"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+		/>
 	<TextView
 		android:text="Song Title"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -11,39 +22,54 @@
 		android:minHeight="25px"
 		android:id="@+id/textView1" />
 	<TextView
-		android:id="@+id/SongTitle" />
+		android:id="@+id/SongTitle"
+		android:layout_toRightOf="@+id/textView1"/>
+
 	<TextView
 		android:text="Artist"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:id="@+id/textView3" />
+	
 	<TextView
+		android:textColor="#000066"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-		android:id="@+id/Artist" />
+		android:id="@+id/Artist"
+	    android:clickable="true"
+		android:linksClickable="true"
+		android:textColorLink="@color/colorPrimary"
+		android:layout_toRightOf="@+id/textView3"
+	/>
 	<TextView
-		android:text="Imvdb Pick:"
+		android:text="Featured Artist:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:id="@+id/textView5" />
 	<TextView
 		android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-		android:id="@+id/ImvdbPick" />
+		android:id="@+id/Featured" 
+		android:layout_toRightOf="@+id/textView5"/>
 	<TextView
-		android:text="Year"
+		android:text="Watch:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:id="@+id/textView7" />
 	<TextView
+		android:textColor="#000066"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-		android:id="@+id/Year" />
+		android:id="@+id/Watch" 
+		android:clickable="true"
+		android:linksClickable="true"
+		android:textColorLink="@color/colorPrimary"
+	/>
 	<TextView
-		android:text="Url:"
+		android:text="Views:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
 		android:id="@+id/textView9" />
 	<TextView
 		android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-		android:id="@+id/Url" />
+		android:id="@+id/Views" />
 	<TextView
 		android:text="	ID:"
 		android:textAppearance="?android:attr/textAppearanceSmall"
@@ -52,5 +78,45 @@
 		android:layout_width="match_parent"
         android:layout_height="wrap_content" 
 		android:id="@+id/VideoId" />
+	<TextView
+		android:text="Release Date: "
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView11" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Release" />
+		<TextView
+		android:text="Director: "
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView12" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Director" />
+	<TextView
+		android:text="Credits "
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView13"
+			/>
+	<TextView
+		android:text="Crew: "
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView14"
+		/>
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Crew" />
+	<TextView
+		android:text="Cast: "
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView14"
+		/>
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Cast" />
 
 </GridLayout>
+</ScrollView>

@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Drawing;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Graphics;
 
 using Imvdb.LibreriaImvdb;
+using System.Security.Policy;
+using System.Net;
+using Android;
+//using mtw;
 
-namespace mtw
+namespace m2w
 {
-    public class SearchResults : BaseAdapter <Video> 
+    public class SearchResults : BaseAdapter<Video>
     {
         private readonly Activity _context;
         private readonly IList<Video> _videos;
@@ -30,10 +35,12 @@ namespace mtw
             var view = convertView
                         ?? _context.LayoutInflater.Inflate(Resource.Layout.Video, null);
             var video = _videos[position];
-
-            
+            //view.FindViewById<ImageView>(Resource.Id.Anteprima).SetImageURI((Uri).Parse(video.Image.t));
+            var imageBitmap = GetImageBitmapFromUrl(video.image.b);
+            var imagen = view.FindViewById<ImageView>(Resource.Id.Anteprima_img);
+            imagen.SetImageBitmap(imageBitmap);
             view.FindViewById<TextView>(Resource.Id.SongTitle).Text = video.song_title;
-            view.FindViewById<TextView>(Resource.Id.Artist).Text = video.Artist.name;
+            view.FindViewById<TextView>(Resource.Id.Artist).Text = video.artists[0].name;
             return view;
         }
 
@@ -50,6 +57,26 @@ namespace mtw
         {
             get { return _videos[position]; }
         }
-        //~SearchResults();
+        public Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+            try
+            {
+                using (var webClient = new WebClient())
+                {
+                    var imageBytes = webClient.DownloadData(url);
+                    if (imageBytes != null && imageBytes.Length > 0)
+                    {
+                        imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception is thrown. Message is :" + e.Message);
+                System.Diagnostics.Debug.WriteLine("Exception is thrown. Message is :" + e.Message);
+            }
+            return imageBitmap;
+        }
     }
 }
