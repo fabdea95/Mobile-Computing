@@ -32,7 +32,7 @@ namespace Imvdb.LibreriaImvdb
         public List<Sources> sources { get; set; }
         public List<Directors> directors { get; set; }
         public Credits credits { get; set; }
-        public long release_date_stamp { get; set; }
+        public string release_date_stamp { get; set; }
         public string release_date_string { get; set; }
         public List<Featured> featured_artists { get; set; }
         public Popularity popularity { get; set; }

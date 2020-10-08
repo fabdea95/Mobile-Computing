@@ -40,7 +40,7 @@ namespace m2w
             var imagen = view.FindViewById<ImageView>(Resource.Id.Anteprima_img);
             imagen.SetImageBitmap(imageBitmap);
             view.FindViewById<TextView>(Resource.Id.SongTitle).Text = video.song_title;
-            view.FindViewById<TextView>(Resource.Id.Artist).Text = video.artists[0].name;
+            view.FindViewById<TextView>(Resource.Id.Artist).Text = video.artists[position].name;
             return view;
         }
 
@@ -78,5 +78,16 @@ namespace m2w
             }
             return imageBitmap;
         }
+    }
+
+    class Navigation
+    {
+        public int BackCheck { get; set; }
+
+        public Navigation()
+        {
+            this.BackCheck = 0;
+        }
+
     }
 }

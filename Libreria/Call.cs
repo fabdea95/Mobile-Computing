@@ -154,7 +154,7 @@ namespace Imvdb.LibreriaImvdb
                 Console.WriteLine("Exception is thrown. Message is :" + e.Message);
                 System.Diagnostics.Debug.WriteLine("Exception is thrown. Message is :" + e.Message);
             }
-            System.Diagnostics.Debug.WriteLine(fullvideo.credits.cast[0].entity_name);
+            //System.Diagnostics.Debug.WriteLine(fullvideo.credits.cast[0].entity_name);
             return fullvideo;
         }
     }
