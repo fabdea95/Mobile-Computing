@@ -26,7 +26,7 @@ namespace Imvdb.LibreriaImvdb
     public class Call
     {
         private string appKey = "ZO93Xed56gtIwxTTQzqnZ5lNjiRewoT7zet23Pp2";
-        Action<IList<Video>> callback;
+       // Action<IList<Video>> callback;
         /* public Call(string appKey, Action<IList<Video>> callback)
          {
              this.appKey = appKey;
@@ -47,29 +47,39 @@ namespace Imvdb.LibreriaImvdb
             //così decomprimerò automaticamente i dati se questi mi arrivano compressi
             string result = "";
             string endpoint = "";
-            if (type == 's')
-                endpoint = @"http://imvdb.com/api/v1/search/videos?q="+query;
-            if (type == 'v')
-                endpoint = @"http://imvdb.com/api/v1/video/"+query+"?include=credits,bts,countries,sources,popularity,featured";
+            switch (type)
+            {
+                case 's':   //search
+                    endpoint = @"http://imvdb.com/api/v1/search/videos?q=" + query;
+                    break;
+                case 'v':   //video
+                    endpoint = @"http://imvdb.com/api/v1/video/" + query + "?include=credits,bts,countries,sources,popularity,featured";
+                    break;
+                case 'a':   //artista
+                            //endpoint = @"http://imvdb.com/api/v1/entity/634";
+                    endpoint = @"http://imvdb.com/api/v1/search/entities?q=michel+gondry";
+                    System.Diagnostics.Debug.WriteLine(endpoint);
+                    break;
+                case 'c':   //credits entity
+                    endpoint = @"https://imvdb.com/api/v1/entity/" + query;
+                    break;
+            }
             string jsonResponse = "";
             using (HttpClient httpClient = new HttpClient(handler))
             {
-                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application /json"));
                 httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("deflate"));
                 httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip")); // così richiedo che i dati mi arrivino compressi
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64);
                 httpClient.DefaultRequestHeaders.AcceptCharset.Add(new StringWithQualityHeaderValue("UTF-8"));
-                httpClient.DefaultRequestHeaders.Add("UserAgent", "esempio1");
+                
 
 
                 HttpContent content = new StringContent("", Encoding.UTF8);
 
                 HttpResponseMessage response = await httpClient.PostAsync(endpoint, content);
                 jsonResponse = await response.Content.ReadAsStringAsync();
-                /*if (response.IsSuccessStatusCode==false)
-                {
-                    return "ERROR";
-                }*/
+
             }
 
             return jsonResponse;
@@ -116,18 +126,6 @@ namespace Imvdb.LibreriaImvdb
                     {
                         id = long.Parse((string)status.SelectToken("id")),
                         song_title = (string)status.SelectToken("song_title"),
-                        /*
-                        song_slug = (string)status.SelectToken("song_slug"),
-                        url = (string)status.SelectToken("url"),
-                        multiple_versions = bool.Parse((string)status.SelectToken("multiple_versions")),
-                        version_name = (string)status.SelectToken("version_name"),
-                        version_number = int.Parse((string)status.SelectToken("version_number")),
-                        is_imvdb_pick = bool.Parse((string)status.SelectToken("is_imvdb_pick")),
-                        aspect_ratio = (string)status.SelectToken("aspect_ratio"),
-                        year = (string)status.SelectToken("year"),
-                        verified_credits = bool.Parse((string)status.SelectToken("verified_credits")),
-                        */
-
                         artists = vid_artists,
                         image = imgs[j = j + 1]
                     }
@@ -156,6 +154,26 @@ namespace Imvdb.LibreriaImvdb
             }
             //System.Diagnostics.Debug.WriteLine(fullvideo.credits.cast[0].entity_name);
             return fullvideo;
+        }
+
+        public Entity GetFullEntity(string query, char type='a')
+        {
+            Entity fullentity = new Entity();
+            var task = Task.Run(() => RequestAccess(query.ToString(), type));
+            task.Wait();
+            var result = task.Result;
+            System.Diagnostics.Debug.WriteLine("FULL ENTITY RESULT");
+            System.Diagnostics.Debug.WriteLine(result);
+            try
+            {
+                fullentity = JsonConvert.DeserializeObject<Entity>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception is thrown. Message is :" + e.Message);
+                System.Diagnostics.Debug.WriteLine("Exception is thrown. Message is :" + e.Message);
+            }
+            return fullentity;
         }
     }
 }

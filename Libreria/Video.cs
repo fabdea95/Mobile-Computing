@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿/*CLASSE CHE RAPPRESENTA UN VIDEO*/
+
+using Newtonsoft.Json;
 using System.Collections.Generic;
 namespace Imvdb.LibreriaImvdb
 {

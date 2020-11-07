@@ -3,13 +3,16 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="#303035"
+	android:textColor="#fff"
 	>
+<!--
 <GridLayout
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
 >
-			<ImageView
+	<ImageView
 			android:id="@+id/Full_img"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -118,5 +121,341 @@
         android:layout_height="wrap_content" 
 		android:id="@+id/Cast" />
 
-</GridLayout>
+</GridLayout> 
+	-->
+	<TableLayout 
+		android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+		android:fillViewport="true" 
+		android:background="#303035"
+		android:textColor="#fff"
+		>
+
+
+		<TextView 
+			android:text="Info Video"
+			android:gravity="center_horizontal"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="#fe5461"
+		/>
+		<ImageView
+			android:id="@+id/Full_img"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+			
+		/>
+
+
+		<TableRow
+            android:id="@+id/tr1"
+            android:padding="2.5dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+			android:layout_weight="1" 
+		>
+		<TextView
+		android:text="Song Title"
+		android:textSize="11dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="wrap_content" 
+		android:id="@+id/textView1" 
+		android:textColor="#fe5461"/>
+		<TextView
+		android:id="@+id/SongTitle"
+		android:textColor="#fff"
+		android:textSize="12dp"
+		android:layout_toRightOf="@+id/textView1"/>
+		</TableRow>
+
+	<TableRow
+            android:id="@+id/tr2"
+            android:padding="2.5dp"
+	        android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+			android:layout_weight="1" 
+			
+			>
+		<TextView
+		android:text="Artist"
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView3" />
+	<TextView
+		android:textColor="#fff"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:textSize="12dp"
+		
+		android:id="@+id/Artist"
+	    android:clickable="true"
+		android:linksClickable="true"
+		android:textColorLink="#fe5461"
+		android:layout_toRightOf="@+id/textView3"
+	/>
+	</TableRow>
+	
+	<TableRow
+		android:id="@+id/tr3"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+	<TextView
+		android:text="Featured Artist:"
+		android:textColor="#fe5461"
+		android:textSize="11dp"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView5" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:textSize="12dp"
+		android:textColor="#fff"
+		android:id="@+id/Featured" 
+		android:layout_toRightOf="@+id/textView5"/>
+		</TableRow>
+	<TableRow
+		android:id="@+id/tr5"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+	<TextView
+		android:text="Views:"
+		android:textColor="#fe5461"
+		
+		android:textSize="11dp"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView9" />
+	<TextView
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:textSize="12dp"
+		android:textColor="#fff"
+		android:id="@+id/Views" />
+	</TableRow>
+
+	<TableRow
+		android:id="@+id/tr6"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+	<TextView
+		android:text="ID:"
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView10" />
+	<TextView
+		android:textSize="11dp"
+		android:textColor="#fff"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/VideoId" />
+	</TableRow>
+
+	<TableRow
+		android:id="@+id/tr7"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+	<TextView
+		android:text="Release Date: "
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView11" />
+	<TextView
+		android:textSize="11dp"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:textColor="#fff"
+		android:id="@+id/Release" />
+	</TableRow>
+	<TableRow
+		android:id="@+id/tr4"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+	<TextView
+		android:text="Watch on:"
+		android:textColor="#fe5461"
+		android:textSize="12dp"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView7" />
+<!--
+	<TextView
+		android:textColor="#000066"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:id="@+id/Watch" 
+		android:clickable="true"
+		android:linksClickable="true"
+		android:textColorLink="@color/colorPrimary"
+	/>
+-->
+	<ImageButton 
+		android:id= "@+id/youtube"
+		android:src="@drawable/youtube"
+		android:layout_width="1dp"
+		android:layout_height="25dp"
+		android:scaleType="fitCenter"
+		android:padding="1dp"
+		android:background="#303035"
+		android:visibility="invisible"
+			/>
+	<ImageButton 
+		android:id= "@+id/vimeo"
+		android:src="@drawable/vimeo"
+		android:layout_width="1dp"
+		android:layout_height="25dp"
+		android:scaleType="fitCenter"
+		android:padding="1dp"
+		android:background="#303035"
+		android:visibility="invisible"
+			/>
+	</TableRow>
+	
+
+
+	<TableRow
+		android:id="@+id/tr8"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		>
+
+	<TextView
+		android:text="Director: "
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView12" />
+	<TextView
+		android:textSize="11dp"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:textColor="#fff"
+		android:id="@+id/Director" />
+
+	</TableRow>
+
+	<TableRow
+		android:id="@+id/tr9"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+
+		/>
+	<TableRow
+		android:id="@+id/tr"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1"
+		>
+	<TextView
+		android:text="Credits "
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView13"
+			/>
+	</TableRow>
+
+	<TableRow
+		android:id="@+id/tr10"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+
+		>
+	<TextView
+		android:text="Crew: "
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView14"
+		/>
+	</TableRow>
+	<TableRow
+		android:id="@+id/tr12"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		android:textColor="#fff"
+		>
+	<TextView
+		android:padding="2.5dp"
+		android:textSize="11dp"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:textColor= "#fff"
+		android:id="@+id/Crew1" />
+	<TextView
+		android:padding="2.5dp"
+		android:textSize="11dp"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+		android:textColor= "#fff"
+		android:id="@+id/Crew2" />
+	</TableRow>
+	<TableRow
+		android:id="@+id/tr12"
+        android:padding="2.5dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+		android:layout_weight="1" 
+		android:textColor="#fff"
+		>
+	<TextView
+		android:text="Cast: "
+		android:textSize="11dp"
+		android:textColor="#fe5461"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/textView14"
+		/>
+	</TableRow>
+
+
+
+	<TextView
+		android:padding="2.5dp"
+		android:textSize="11dp"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:textColor="#fff"
+		android:id="@+id/Cast" />
+
+	</TableLayout>
+
 </ScrollView>

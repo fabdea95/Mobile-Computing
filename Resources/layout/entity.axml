@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+       <TextView 
+			android:text="Info"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_height ="match_parent"
+		    android:layout_width="wrap_content" 
+		/>
+		<ImageView
+			android:id="@+id/Full_img_e"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+		/>
+		<TextView
+		android:text="Name"
+		android:textSize="11dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/textView_e1" />
+	<TextView
+		android:id ="@+id/ArtistName"
+		android:textSize="12dp"
+		android:layout_height="wrap_content"
+		android:layout_width= "match_parent"
+		/>
+	<TextView
+		android:text="Bio"
+		android:textSize="12dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/textView_e2" />
+	<TextView 
+		android:id = "@+id/Bio"
+		android:textSize = "12dp"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+	/>
+	
+</LinearLayout>
+

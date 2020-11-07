@@ -2,16 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+	android:background="#303035"
+	>
 	<TextView 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:paddingBottom="5dip"
 		android:text="SEARCH RESULTS:"
+		android:textColor="#fe5461"
 	/>
 	<ListView
-        android:id="@+id/Results"
+        android:id="@+id/Result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
+		android:background="#303035"
+		android:textColor="#fff"
+		android:backgroundTint="#fff"
 	/>
 </LinearLayout>
+
